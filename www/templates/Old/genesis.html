@@ -6,7 +6,12 @@
     </header>
     <ion-content id="statementbody"  has-header="true" padding="true">
         <div >
-            <p> test</p>
+            <h1>Select text file</h1>
+            <input type="file" on-read-file="showContent($fileContent)" />
+            <div ng-if="content">
+                <h2>File content is:</h2>
+                <pre>{{ content }}</pre>
+            </div>
         </div>
     </ion-content>
 </ion-view>

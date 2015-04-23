@@ -39,12 +39,13 @@ body {
     margin-top: 12vw;
 }
 
+
 #menubody {
     width: 80vw;
-    height: 14vw;
     background-color: #3a3a3a;
     float: right;
     position: relative;
+    overflow-y: visible;
 }
 
 .menuicon_selected {
