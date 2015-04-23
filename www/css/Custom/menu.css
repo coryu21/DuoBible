@@ -1,0 +1,269 @@
+
+.menu-content {
+    transform : none !important;
+    left : 20%;
+    width : 80%;
+}
+
+.menu-left {
+    width: 20% !important;
+    background-color : #222222;
+}
+
+
+#menubar {
+    background-color : #222222;
+    border-color:transparent;
+}
+
+#menuicon {
+    padding: 0 0;
+}
+body {
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    font-weight: 100;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100vh;
+    background-color: #3a3a3a;
+}
+
+.clearfix {
+    clear: both;
+}
+
+#statementbody{
+    margin-top: 12vw;
+}
+
+#menubody {
+    width: 80vw;
+    height: 14vw;
+    background-color: #3a3a3a;
+    float: right;
+    position: relative;
+}
+
+.menuicon_selected {
+    width: 20vw;
+    height: 20vw;
+    background-color: #141414;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.menuicon {
+    width: 20vw;
+    height: 20vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.oldtestament {
+    color: #FFF;
+    background-color: #c652af;
+    width: 100%;
+    height: 50vh;
+    background-image: url('../../img/oldtestament.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.newtestament {
+    color: #FFF;
+    background-color: #1dbbc2;
+    width: 100%;
+    height: 50vh;
+    background-image: url('../../img/newtestament.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.linkall {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.listlink {
+    display: block;
+    width: 70vw;
+    height: 100%;
+    padding: 5vw;
+    float: left;
+}
+
+.menu_masthead {
+    width: 100%;
+    height: 30vh;
+    background-color: #000;
+    background-position: center;
+    background-size: cover;
+
+}
+
+.menu_old{
+    background-image: url('../../img/oldtestament.jpg');
+}
+
+.menu_new{
+    background-image: url('../../img/newtestament.jpg');
+}
+
+.menu_setting{
+    background-image: url('../../img/settings_masthead.jpg');
+}
+
+.menu_map{
+    background-image: url('../../img/maps_masthead.jpg');
+}
+
+.menu_bookmark{
+    background-image: url('../../img/bookmarks_masthead.jpg');
+}
+
+.masthead_text {
+    position: relative;
+    top: 35%;
+    left: 50%;
+    width: 70vw;
+    margin-left: -35vw;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.list {
+    width: 100%;
+}
+
+.list_item {
+    height: 6vw;
+    color: #FFF;
+    font-size: 4.5vw;
+    text-transform: uppercase;
+    letter-spacing: 1.3;
+    display: block;
+}
+
+.listlink:hover, .listlink:active {
+    background-color: #303030;
+}
+
+
+
+h1, h2, h3, h4, h5 {
+    color:white;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+}
+
+h1 {
+    font-size: 7vw;
+    letter-spacing: .6vw;
+}
+
+
+a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FFF;
+}
+
+.oldtestament:hover, .oldtestament:active {
+    opacity: .8;
+}
+
+.newtestament:hover, .newtestament:active {
+    opacity: .8;
+}
+
+.icon {
+    width: 8vw;
+    height: 7vw;
+    background-position: center;
+    background-size: cover;
+    left: 50%;
+    position: relative;
+    margin-left: -4vw;
+    margin-bottom: 1vh;
+}
+
+.contentarea {
+    position: relative;
+    top: 30%;
+    text-align: center;
+    width: 100%;
+}
+
+.contentarea h1 {
+    font-size: 11vw;
+    margin-bottom: -1vw;
+}
+
+.contentarea h3 {
+    letter-spacing: .2vw;
+    font-weight: 400;
+    font-size: 1.17em;
+}
+
+.contentarea h2 {
+    font-size: 5vw;
+    margin: .6vh;
+}
+
+.bookmark_none {
+    width: 60vw;
+    text-align: center;
+    padding: 10vw;
+    color: #161515;
+    text-shadow: 0px 1px #535353;
+    font-size: 3.8vw;
+    line-height: 4.5vh;
+    letter-spacing: .1vw;
+    margin-top: 10vh;
+    display: none;
+}
+
+.bookmark_none h2 {
+    margin-top: 3vh;
+}
+
+.bookmark_exist {
+    width: 100%;
+}
+
+.icon_home{
+    content : url("../../img/duobible_icon.png");
+}
+
+.icon_setting{
+    content : url("../../img/settings_icon.png");
+}
+
+.icon_map{
+    content : url("../../img/map_icon.png");
+}
+
+.icon_bookmark{
+    content :url("../../img/bookmark_icon.png");
+}
+
+.icon_old{
+    content :url("../../img/oldtestament_icon.png");
+}
+
+.icon_new{
+    content :url("../../img/newtestament_icon.png");
+}
