@@ -49,12 +49,32 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             })
 
-            .state('app.genesis', {
-                url: "/old/genesis",
+            .state('app.text', {
+                url: "/old/text/{book}",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/Old/genesis.html",
-                        controller: 'ReadCtrl'
+                        templateUrl: "templates/Old/test.html",
+                        controller: 'TextCtrl'
+                    }
+                }
+            })
+
+            .state('app.json', {
+                url: "/old/json/{book}",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/Old/test.html",
+                        controller: 'JsonCtrl'
+                    }
+                }
+            })
+
+            .state('app.xml', {
+                url: "/old/xml/{book}",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/Old/test.html",
+                        controller: 'XmlCtrl'
                     }
                 }
             })
