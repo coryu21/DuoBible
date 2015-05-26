@@ -1,0 +1,15 @@
+
+<ion-view>
+    <header id="menubody" class="bar bar-header">
+        <div class="list_item"><a href="#/app/old"><span class="listlink">{{bookName}}</span></a></div>
+        <div>
+        </div>
+    </header>
+    <ion-content id="statementbody"  has-header="true" padding="true">
+        <div>
+            <div ng-if="text" >
+                <pre style="{{customStyle()}}">{{ text }}</pre>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

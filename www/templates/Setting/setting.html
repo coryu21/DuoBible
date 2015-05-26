@@ -4,7 +4,17 @@
             <div class="menu_masthead menu_setting">
                 <div class="masthead_text"><h1>Settings</h1><h2>설정</h2></div>
             </div>
-            <div>Settings here</div>
+            <div style="text-align: center; margin-top:5vw">
+                <h3>Font Size</h3>
+                <h4>글꼴 크기</h4>
+                <br/>
+                <button class="button button-dark old_content" ng-click="textSizeChange(0.2)">
+                    UP
+                </button>
+                <button class="button button-dark" ng-click="textSizeChange(-0.2)">
+                    DOWN
+                </button>
+            </div>
         </div>
     </ion-content>
 </ion-view>

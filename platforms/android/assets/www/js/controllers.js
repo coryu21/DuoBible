@@ -27,49 +27,33 @@ angular.module('starter.controllers', [])
     })
 
     .controller('ReadCtrl', function ($scope, $stateParams) {
-
-        function gotFS(fileSystem) {
-            fileSystem.root.getFile("readme.txt", null, gotFileEntry, fail);
-        }
-
-        function gotFileEntry(fileEntry) {
-            fileEntry.file(gotFile, fail);
-        }
-
-        function gotFile(file){
-            readDataUrl(file);
-            readAsText(file);
-        }
-
-        function readDataUrl(file) {
-            var reader = new FileReader();
-            reader.onloadend = function(evt) {
-                var json = this.result;
-                var obj = JSON.parse(json);
-                console.log("Read as data URL");
-                console.log(evt.target.result);
-                return obj;
-            };
-            console.log(file);
-            reader.readAsDataURL(file);
-        }
-
-        function readAsText(file) {
-            var reader = new FileReader();
-            reader.onloadend = function(evt) {
-                console.log("Read as text");
-                console.log(evt.target.result);
-            };
-            reader.readAsText(file);
-        }
-
-        function fail(evt) {
-            console.log(evt.target.error.code);
-        }
-
-        //readAsText("js/test.txt");
+        $scope.showContent = function ($fileContent) {
+            $scope.content = $fileContent;
+        };
     })
 
+
+    .directive('onReadFile', function ($parse) {
+        return {
+            restrict: 'A',
+            scope: false,
+            link: function (scope, element, attrs) {
+                var fn = $parse(attrs.onReadFile);
+
+                element.on('change', function (onChangeEvent) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (onLoadEvent) {
+                        scope.$apply(function () {
+                            fn(scope, { $fileContent: onLoadEvent.target.result });
+                        });
+                    };
+
+                    reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
+                });
+            }
+        };
+    })
 
     .controller('SettingCtrl', function ($scope, $stateParams) {
 
@@ -81,7 +65,7 @@ angular.module('starter.controllers', [])
             console.log('SettingCtrl-textChange function() ' + size);
             $scope.name = size;
             $scope.size = _size;
-            $scope.change.style = {"font-size": _size};
+            $scope.change.style = { "font-size": _size };
         };
 
         $scope.textSizeUpDown = function (size) {
@@ -89,9 +73,91 @@ angular.module('starter.controllers', [])
             _size = parseInt(_size, 10) + size;
             _size = _size + 'px';
             $scope.size = _size;
-            $scope.change.style = {"font-size": _size};
+            $scope.change.style = { "font-size": _size };
 
         }
 
+    })
 
+    /* test */
+    //Load bible form text file
+    .controller('TextCtrl', function ($scope, $stateParams, $http) {
+        console.log("TextCtrl");
+        //If using text file, we should save text file inarray and then parse by verses
+        var bookname = $stateParams.book;
+        $scope.bookName = $stateParams.book;
+        var _url = 'file/' + bookname + '.txt';
+        $http({
+            method: 'GET',
+            url: _url
+
+        })
+            .success(function (data, status, headers, config) {
+                $scope.text = data;
+            })
+            .error(function (data, status, headers, config) {
+                console.log('error');
+            });
+    })
+    //Load bible form Json file
+    .controller('JsonCtrl', function ($scope, $stateParams, $http) {
+        console.log("JsonCtrl");
+        //$stateParams.book is parameter {book} -> genesis
+        var bookname = $stateParams.book;
+        $scope.bookName = $stateParams.book;    //For Title
+        var _url = 'file/' + bookname + '.json';    //File URL
+        //Get file, that is same with $http.get(_url)
+        $http({
+            method: 'GET',
+            url: _url
+
+        })
+        .success(function (data, status, headers, config) {
+            //Parsing Json file
+            var _jsonFile = data;
+            var _text = '';
+            var _chapNum;
+            $.each(_jsonFile[$stateParams.book], function (key1, value1) {
+                //Key1 = Chaper#
+                _chapNum = key1 + ':';
+                $.each(value1, function (key2, value2) {
+                    //Key2 = Verse#, Value2 = contents
+                    _text += _chapNum + key2 + ' ' + value2 + '\n\n';
+                })
+            });
+            $scope.text = _text;
+        })
+        .error(function (data, status, headers, config) {
+            console.log('error');
+        });
+    })
+
+    .controller('XmlCtrl', function ($scope, $stateParams, $http) {
+        console.log("XmlCtrl");
+        var bookname = $stateParams.book;
+        $scope.bookName = $stateParams.book;    //For Title
+        var _url = 'file/' + bookname + '.xml';    //File URL
+        var _text = '';
+        $http({
+            method: 'GET',
+            url: _url
+        })
+        .success(function (data, status, headers, config) {
+            //Parsing XML file
+            var _text = '';
+            var _chapNum;
+            $(data).find('CHAPTER').each(function (i) {
+                _chapNum = $(this).attr('cnumber');
+                $(this).find('VERS').each(function (m) {
+                    _text += _chapNum +':'+ $(this).attr('vnumber')+ ' '+ $(this).text()+'\n\n';
+                })
+                //console.log(_text);
+                $scope.text = _text;
+            });
+            
+        })
+        .error(function (data, status, headers, config) {
+            console.log('error');
+        });
     });
+

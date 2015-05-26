@@ -10,7 +10,7 @@
             <input type="file" on-read-file="showContent($fileContent)" />
             <div ng-if="content">
                 <h2>File content is:</h2>
-                <pre>{{ content }}</pre>
+                <pre ng-style="customStyle" >{{ content }}</pre>
             </div>
         </div>
     </ion-content>

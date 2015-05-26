@@ -1,7 +1,17 @@
 <ion-view>
-    <ion-content>
-        <div id="menubody">
-                <div class="list_item"><a href="/oldtestament/genesis.html"><span class="listlink">Genesis 창세기</span></a></div>
+    <header id="menubody" class="bar bar-header">
+        <div class="list_item"><a href="#/app/old/genesis"><span class="listlink">Genesis 창세기</span></a></div>
+        <div>
+        </div>
+    </header>
+    <ion-content id="statementbody"  has-header="true" padding="true">
+        <div >
+            <h1>Select text file</h1>
+            <input type="file" on-read-file="showContent($fileContent)" />
+            <div ng-if="content">
+                <h2>File content is:</h2>
+                <pre>{{ content }}</pre>
+            </div>
         </div>
     </ion-content>
 </ion-view>
